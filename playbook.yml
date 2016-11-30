@@ -3,11 +3,24 @@
   gather_facts: false
   become: true
 
+  vars:
+    chefdk_url: https://packages.chef.io/stable/ubuntu/12.04/chefdk_1.0.3-1_amd64.deb
+
+    # https://docs.puppet.com/puppet/latest/reference/puppet_collections.html#apt-based-systems
+    puppet_url: https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
+
   tasks:
     - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
       apt:
         update_cache: yes
         cache_valid_time: 3600
+
+    - name: install remote debs (puppet and chefdk)
+      apt:
+        deb: "{{ item }}"
+      with_items:
+           - "{{ chefdk_url }}"
+           - "{{ puppet_url }}"
 
     - name: Install list of packages
       apt: name={{item}} state=installed
@@ -16,12 +29,10 @@
            - python-pip
            - libffi-dev
            - vim
-    - pip: name=virtualenv state=present
+           - rubygems-integration
+           - puppet
 
-    - name: Install pip packages
-      apt: name={{item}} state=installed
-      with_items:
-           - virtualenv
+    - pip: name=virtualenv state=present
 
     - name: Manually create virtualenv
       command: virtualenv /home/vagrant/venv creates="/home/vagrant/venv"
@@ -33,6 +44,8 @@
            - pysphere
            - awscli
            - dopy
+           - salt
+
 
     - template: 
         src: templates/vimrc 
@@ -43,5 +56,11 @@
     - template: 
         src: templates/bash_profile 
         dest: /home/vagrant/.bash_profile
+        owner: vagrant 
+        group: vagrant 
+
+    - template: 
+        src: templates/gemrc 
+        dest: /home/vagrant/.gemrc
         owner: vagrant 
         group: vagrant 
