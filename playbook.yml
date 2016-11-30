@@ -46,21 +46,12 @@
            - dopy
            - salt
 
-
     - template: 
         src: templates/vimrc 
         dest: /home/vagrant/.vimrc 
         owner: vagrant 
         group: vagrant 
-
-    - template: 
-        src: templates/bash_profile 
-        dest: /home/vagrant/.bash_profile
-        owner: vagrant 
-        group: vagrant 
-
-    - template: 
-        src: templates/gemrc 
-        dest: /home/vagrant/.gemrc
-        owner: vagrant 
-        group: vagrant 
+      with_items:
+        - { src: 'templates/vimrc', dest: '/home/vagrant/.vimrc' }
+        - { src: 'templates/bash_profile', dest: '/home/vagrant/.bash_profile' }
+        - { src: 'templates/gemrc', dest: '/home/vagrant/.gemrc' }
