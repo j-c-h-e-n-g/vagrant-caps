@@ -1,15 +1,14 @@
-export AWS_ACCESS_KEY_ID={{ lookup('env','AWS_ACCESS_KEY_ID') }}
-export AWS_SECRET_ACCESS_KEY={{ lookup('env','AWS_SECRET_ACCESS_KEY') }}
+export AWS_ACCESS_KEY_ID={{ aws_access_key_id }}
+export AWS_SECRET_ACCESS_KEY={{ aws_secret_access_key }}
 
-export DO_API_TOKEN={{ lookup('env','DO_API_TOKEN') }}
+export DO_API_TOKEN={{ do_api_token }}
 
-export DME_AKEY={{ lookup('env','DME_AKEY') }}
-export DME_SKEY={{ lookup('env','DME_SKEY') }}
+export DME_AKEY={{ dme_akey }}
+export DME_SKEY={{ dme_skey }}
 
-export VCENTER_USERNAME={{ lookup('env','VCENTER_USERNAME') }}
-export VCENTER_PASSWORD={{ lookup('env','VCENTER_PASSWORD') }}
-export VCENTER_HOSTNAME={{ lookup('env','VCENTER_HOSTNAME') }}
+export VCENTER_USERNAME={{ vcenter_username }}
+export VCENTER_PASSWORD={{ vcenter_password }}
+export VCENTER_HOSTNAME={{ vcenter_hostname }}
 
-export LOGICMONITOR_USERNAME={{ lookup('env','LOGICMONITOR_USERNAME') }}
-export LOGICMONITOR_PASSWORD={{ lookup('env','LOGICMONITOR_PASSWORD') }}
-
+export LOGICMONITOR_USERNAME={{ logicmonitor_username }}
+export LOGICMONITOR_PASSWORD={{ logicmonitor_password }}
