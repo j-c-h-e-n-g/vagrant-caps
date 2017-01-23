@@ -30,13 +30,8 @@
            - rubygems-integration
            - puppet
 
-    - pip: name=virtualenv state=present
-
-    - name: Manually create virtualenv
-      command: virtualenv /home/vagrant/venv creates="/home/vagrant/venv"
-
     - name: Install pip packages
-      pip: name={{item}} state=present  virtualenv=/home/vagrant/venv
+      pip: name={{item}} state=present  
       with_items:
            - ansible
            - pysphere

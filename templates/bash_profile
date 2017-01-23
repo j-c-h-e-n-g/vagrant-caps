@@ -13,4 +13,3 @@ export VCENTER_HOSTNAME={{ lookup('env','VCENTER_HOSTNAME') }}
 export LOGICMONITOR_USERNAME={{ lookup('env','LOGICMONITOR_USERNAME') }}
 export LOGICMONITOR_PASSWORD={{ lookup('env','LOGICMONITOR_PASSWORD') }}
 
-source ~/venv/bin/activate
