@@ -36,15 +36,15 @@
     - name: Install list of packages
       apt: name={{item}} state=installed
       with_items:
-           - python-dev 
+           - python-dev
            - python-pip
            - libffi-dev
            - vim
            - rubygems-integration
            - puppet
 
-    - name: Install pip packages
-      pip: name={{item}} state=present  
+    - name: install pip packages
+      pip: name={{item}} state=present
       with_items:
            - ansible
            - pysphere
@@ -52,11 +52,12 @@
            - dopy
            - salt
 
-    - template: 
-        src: templates/vimrc 
-        dest: /home/vagrant/.vimrc 
-        owner: vagrant 
-        group: vagrant 
+    - name: installing templates
+      template:
+        src: templates/vimrc
+        dest: /home/vagrant/.vimrc
+        owner: vagrant
+        group: vagrant
       with_items:
         - { src: 'templates/vimrc', dest: '/home/vagrant/.vimrc' }
         - { src: 'templates/bash_profile', dest: '/home/vagrant/.bash_profile' }
